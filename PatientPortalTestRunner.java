@@ -24,4 +24,3 @@ public class PatientPortalTestRunner {
     	System.out.println("No errors detected in run.");
     	System.exit(1);
 	}
-}
