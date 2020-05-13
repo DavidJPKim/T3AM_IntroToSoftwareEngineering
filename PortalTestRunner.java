@@ -1,5 +1,7 @@
-package de.vogella.junit.first;
-import org.junit.*;
+//package de.vogella.junit.first;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 /**
 * This is the test runner file for Portal.java. It runs all tests in PortalTest.
