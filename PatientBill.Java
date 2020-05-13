@@ -4,52 +4,58 @@ import java.net.URLConnection;
 import java.io.*;
 import java.util.Arrays;
 import java.util.ArrayList;
-
-
+/**
+ * Upon being called, PatientBill.java recieves the customer's ID number(String customerID) from
+ * the user and uses getPortal() to recieve the API data which is saved as String billsting.
+ * This information uses to run setCustomerInfo() which seperates the customer info and looks
+ * for the customerID to find the right bill information to return as String pBill.
+ * <p>
+ * @param  private String customerID: The ID that the user submits
+ * @param  public String pBill: The String that contains the result of setCustomerInfo()
+ * @param  private String billstring: The string that holds all of the API data
+ * @return private String pBill is returned when setCustomerInfo() is called.
+ */
 
 public class PatientBill{
  
-    //This is the ID that is going to used find the customer information
+
     private String customerID; 
-    //This is where the customer's information is going to be held
-    private String pbill;
-    //This is the string that is being recieved by Bill.java
+
+    public String pBill;
+
     private String billstring;
    
-   //This revised the customer ID and all of the customers' information
+
   public PatientBill(String customerID){
       this.customerID = customerID;
       Bill bill = new Bill();
-      billstring = bill.getUrlInfo();
+      billstring = bill.getBill();
   }
-  //This returns the customer's information 
-  public String getPatientBill(){
-      return pBill;
-  }
-  //This grabs the seperates all of the customer IDs
-   public void setCustomerInfo(){
+
+   public String setCustomerInfo(){
      boolean idfound = false;
      String str[] = billstring.split("},");
      List<String> billList = new ArrayList<String>();
      billList = Arrays.asList(str);
-    //Find the right string for the customers
+
      for (int counter = 0; counter < billList.size(); counter++) { 
          String tempbill= billList.get(counter);
          boolean customerIDfound = tempbill.contains(customerID);
-         //says whether the ID is found
+
          if (customerIDfound == true){
           pBill = billList.get(counter);
           idfound = true;
           
          }
       }
-      //Finds whether or not the ID was found
+
      if(idfound = false){
-      //throws exeption
+
         throw new IllegalArgumentException("Customer ID not found");
      }
+     
+     return pBill;
    } 
            
 
             
-}
