@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @return private String pPortal is returned when setCustomerInfo() is called.
  */
 
-public class PatientBill{
+public class PatientPortal{
  
 
     private String customerID; 
@@ -26,19 +26,19 @@ public class PatientBill{
     private String portalstring;
    
 
-  public PatientBill(String customerID){
+  public PatientPortal(String customerID){
       this.customerID = customerID;
       Portal portal = new Portal();
-      portalstring = portal.getPortal();
+      portalstring = portal.getUrlInfo();
   }
 
    public String setCustomerInfo(){
      boolean idfound = false;
-     String str[] = billstring.split("},");
+     String str[] = portalstring.split("},");
      List<String> portalList = new ArrayList<String>();
      portalList = Arrays.asList(str);
 
-     for (int counter = 0; counter < billList.size(); counter++) { 
+     for (int counter = 0; counter < portalList.size(); counter++) { 
          String tempportal= portalList.get(counter);
          boolean customerIDfound = tempportal.contains(customerID);
 
@@ -56,6 +56,3 @@ public class PatientBill{
      
      return pPortal;
    } 
-           
-
-            
