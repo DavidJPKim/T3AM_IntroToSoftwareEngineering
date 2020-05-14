@@ -68,7 +68,7 @@ public class HPMS {
             
         }
     
-   
+   //main method that runs the client, takes 1 or 3 arguments without causing error
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         if(!isArgumentValid(args)) {
@@ -77,10 +77,6 @@ public class HPMS {
         }
         componentCaller(componentCode,args);
     }
-
- 
-
-}
 
  
 
