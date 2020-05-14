@@ -3,12 +3,16 @@ import org.junit.Ignore;
 import org.junit.Assert;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-//tests the HPMS client and its methods
+/*
+ * tests the HPMS client and its methods
+ */
 public class HPMStest {      /*   Returns a new instance of Calculator.   */   
     private HPMS getHPMS(){      
      return new HPMS();  
      } 
-    //tests isArgumentValid returns false when the args.length is not 1 or 3
+    /*
+     * tests isArgumentValid returns false when the args.length is not 1 or 3
+     */
     @Test
     public void test_isArgumentValid_correctArgsLength() {     
         HPMS hpms = this.getHPMS();       
@@ -18,7 +22,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args);      
         Assert.assertEquals(result, false);   
     }
-    //tests isArgumentValid returns true when args.length=3 ,args[0]=--customer-id and args[2] is --billing
+    /*
+     * tests isArgumentValid returns true when args.length=3 ,args[0]=--customer-id and args[2] is --billing
+     */
      @Test   
      public void test_isArgumentValid_idFirstandBillOrPortalThirdSuccess() {     
         HPMS hpms = this.getHPMS();       
@@ -29,7 +35,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args);      
         Assert.assertEquals(result, true);   
     }
-   //tests isArgumentValid returns false when the args.length= 3 but the arguments are spelled wrong 
+   /*
+    *tests isArgumentValid returns false when the args.length= 3 but the arguments are spelled wrong 
+    */
     @Test  
     public void test_isArgumentValid_idFirstandBillOrPortalThirdFail() {     
         HPMS hpms = this.getHPMS();       
@@ -40,7 +48,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args);      
         Assert.assertEquals(result, false);   
     }
-  //tests isArgumentValid  returns true when args.length=3 and --billing is first and --customer-id is 2nd
+  /*
+   * tests isArgumentValid  returns true when args.length=3 and --billing is first and --customer-id is 2nd
+   */
     @Test  
     public void test_isArgumentValid_BillOrPortalFirstandIdSecondSuccess() {     
         HPMS hpms = this.getHPMS();       
@@ -51,7 +61,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args);      
         Assert.assertEquals(result, true);   
     } 
-  //tests isArgumentValid returns true and the arguments are spelled correctly
+  /*
+   * tests isArgumentValid returns true and the arguments are spelled correctly
+   */
     @Test  
      public void test_isArgumentValid_BillOrPortalSuccess() {     
         HPMS hpms = this.getHPMS();       
@@ -60,7 +72,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args); 
         Assert.assertEquals(result, true);   
     }  
-  //tests isArgumentValid returns false when args.length=1 and the arguments are spelled wrong
+  /*
+   * tests isArgumentValid returns false when args.length=1 and the arguments are spelled wrong
+   */
     @Test  
     public void test_isArgumentValid_BillOrPortalFail() {     
         HPMS hpms = this.getHPMS();       
@@ -69,7 +83,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         boolean result = HPMS.isArgumentValid(args);      
         Assert.assertEquals(result, false);   
     }  
-    //tests componentCaller to see if the right result is being printed
+    /*
+     * tests componentCaller to see if the right result is being printed
+     */
     @Test
     public void test_componentCaller_billing() {   
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -86,7 +102,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         System.out.println(result);
         Assert.assertEquals(result.contains( "{    \"patientBilling\": [      {         \"date\": \"2019-01-01\",          \"amount\": 100.0,          \"customer_id\": 100003,          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      },       {         \"date\": \"2020-01-29\",          \"amount\": 105.0,          \"customer_id\": 100003,          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      },       {         \"date\": \"2019-07-16\",          \"amount\": 100.0,          \"customer_id\": 100025,          \"service\": \"Annual Checkup\",          \"patient_id\": 99332      }   ]}"),true);   
     }
-  //tests componentCaller to see if the right result is being printed
+  /*
+   * tests componentCaller to see if the right result is being printed
+   */
     @Test 
      public void test_componentCaller_portal() {   
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -102,7 +120,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         String result=baos.toString();
         Assert.assertEquals(result.contains("{    \"patientPortal\": [      {         \"date\": \"2018-10-31\",          \"customer_id\": 100003,          \"transaction_type\": \"reservation\",          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      },       {         \"date\": \"2019-09-04\",          \"customer_id\": 100003,          \"transaction_type\": \"reservation\",          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      },       {         \"date\": \"2017-05-22\",          \"customer_id\": 100025,          \"transaction_type\": \"reservation\",          \"service\": \"Annual Checkup\",          \"patient_id\": 99332      }   ]}"),true);   
     } 
-  //tests componentCaller to see if the right result is being printed
+  /*
+   * tests componentCaller to see if the right result is being printed
+   */
     @Test 
     public void test_componentCaller_billingAndId() {   
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -121,7 +141,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         
         Assert.assertEquals(result.contains( "       {         \"date\": \"2020-01-29\",          \"amount\": 105.0,          \"customer_id\": 100003,          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      "),true);   
     } 
-  //tests componentCaller to see if the right result is being printed
+  /*
+   * tests componentCaller to see if the right result is being printed
+   */
     @Test 
     public void test_componentCaller_portalgAndIdDifferntArgsOrder() {   
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -140,7 +162,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         
         Assert.assertEquals(result.contains("       {         \"date\": \"2019-09-04\",          \"customer_id\": 100003,          \"transaction_type\": \"reservation\",          \"service\": \"Annual Checkup\",          \"patient_id\": 99989      "),true);   
     }
-  //tests getId to see if the correct id is being found
+  /*
+   * tests getId to see if the correct id is being found
+   */
     @Test 
     public void test_getId_IdAtIndex1(){
         HPMS hpms=this.getHPMS();
@@ -151,7 +175,9 @@ public class HPMStest {      /*   Returns a new instance of Calculator.   */
         String result=hpms.getId(args);
         Assert.assertEquals(result, "100003"); 
     }
-  //tests getId to see if the correct id is being found
+  /*
+   * tests getId to see if the correct id is being found
+   */
     @Test 
     public void test_getId_IdAtIndex2(){
         HPMS hpms=this.getHPMS();
