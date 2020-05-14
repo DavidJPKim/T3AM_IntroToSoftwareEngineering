@@ -11,9 +11,7 @@ import java.lang.NullPointerException;
 * <p>
 * This method either returns the result of the API as a string or the error
 * code F1 in the case where there is a failure with the API Call.
-*
-* @param  String urlString: The url for the HPMS Public Patient Portal API call.
-* @param  String results: the String that contains the result of the HPMS Bill 
+* @param  String Portal: the String that contains the result of the HPMS Bill 
 * Public Patient Portal API Call.
 * @return String results.
 */

@@ -8,8 +8,6 @@ import org.junit.runner.notification.Failure;
 * <p>
 * This method does not return any values. It either prints errors to the 
 * System.error stream or that no errors were detected to the System.out stream.
-*
-* @param  Result result: A result variable used to run PortalTest.
 * @return Returns nothing.
 */
 
